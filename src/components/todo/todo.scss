@@ -1,0 +1,42 @@
+
+.todo {
+  margin: 10px 0;
+  padding: 5px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input {
+    flex-shrink: 0;
+  }
+
+  .controls {
+    align-self: flex-start;
+    margin-left: auto;
+    display: block;
+    visibility: hidden;
+    a {
+      color: #e70000;
+    }
+  }
+
+  .todoText {
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  &.completed {
+    text-decoration: line-through;
+    color: gray;
+  }
+
+  &:hover {
+    .controls {
+      visibility: visible;
+    }
+    background-color: #f9f9fd;
+  }
+}

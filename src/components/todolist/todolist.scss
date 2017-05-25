@@ -1,0 +1,41 @@
+.todoListSection {
+  margin: 0 auto;
+  background-color: white;
+  padding: 5px 10px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+
+  .todoListHeader {
+    display: flex;
+    margin-bottom: 30px;
+
+    input {
+      font-size: 18px;
+      padding: 10px 10px 10px 5px;
+      display: block;
+      width: 250px;
+      border: none;
+      border-bottom: 1px solid #757575;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      margin-left: auto; /* for some reason this right-aligns the button... */
+      width: 60px;
+      text-transform: uppercase;
+      background-color: #00b3f5;
+      border: 0;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+      color: white;
+      @include funButton;
+    }
+  }
+
+  .todoListItems {
+    min-height: 20px;
+    margin: 0;
+    padding: 0;
+  }
+}
