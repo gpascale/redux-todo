@@ -1,16 +1,16 @@
 import { VisibilityFilters } from '../actions';
 import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER } from '../actions/actionTypes';
+import dummyTodos from 'assets/dummyTodos.json';
 
 const initialState = {
   visibilityFilter: VisibilityFilters.SHOW_ALL,
-  todos: []
+  todos: dummyTodos
 };
 
 // (todos is actually state.todos)
 function todosReducer(todos = [], action) {
   switch(action.type) {
-    case ADD_TODO:
-      console.log(ADD_TODO + ' with text ' + action.text);
+    case ADD_TODO: {
       return [
         ...todos,
         {
@@ -19,24 +19,22 @@ function todosReducer(todos = [], action) {
           completed: false
         }
       ];
-    case REMOVE_TODO:
-      console.log(REMOVE_TODO + ' ' + action.id);
+    }
+    case REMOVE_TODO: {
       var removeIndex = todos.findIndex((item) => item.id == action.id);
       if (removeIndex >= 0) {
-        var newTodos = [...todos];
+        let newTodos = [...todos];
         newTodos.splice(removeIndex, 1);
         return newTodos;
       }
       else {
         return todos;
       }
-    case TOGGLE_TODO:
-      console.log(TOGGLE_TODO + ' ' + action.id);
+    }
+    case TOGGLE_TODO: {
       var toggleIndex = todos.findIndex((item) => item.id == action.id);
-      console.log('toggleIndex = ', toggleIndex);
-      var newTodos = todos.map((todo, index) => {
+      let newTodos = todos.map((todo, index) => {
         if (index == toggleIndex) {
-          console.log('aw yeah');
           return {
             text: todo.text,
             id: todo.id,
@@ -48,6 +46,7 @@ function todosReducer(todos = [], action) {
         }
       });
       return newTodos;
+    }
   }
 }
 

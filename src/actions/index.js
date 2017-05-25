@@ -36,6 +36,3 @@ export const setVisibilityFilter = (filter) => {
     filter
   };
 };
-
-const fuck = 7;
-export default fuck;

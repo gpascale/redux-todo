@@ -1,11 +1,11 @@
 const Path = require('path');
-const IS_DEBUG_BUILD = process.env.NODE_ENV !== "production";
+const IS_DEBUG_BUILD = process.env.NODE_ENV !== 'production';
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const ExtractSASS = new ExtractTextPlugin(`/css/index.css`);
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractSASS = new ExtractTextPlugin('/css/index.css');
 
-console.log("DEBUG BUILD? " + IS_DEBUG_BUILD);
+console.log('DEBUG BUILD? ' + IS_DEBUG_BUILD);
 var cssRoot = IS_DEBUG_BUILD ? ('root=' + Path.join(__dirname)) : '';
 
 module.exports = {
@@ -14,20 +14,20 @@ module.exports = {
       { test: /\.css$/,  }
     ]
   }
-}
+};
 
 module.exports = {
   context: __dirname,
-  devtool: IS_DEBUG_BUILD ? "inline-sourcemap" : null,
+  devtool: IS_DEBUG_BUILD ? 'inline-sourcemap' : null,
 
   // Entry Point
   entry: (IS_DEBUG_BUILD ?
     // FOR DEBUG BUILDS, USE HOT RELOADING
-    [
-      'webpack-dev-server/client?http://localhost:8080',
-      'webpack/hot/dev-server',
-      Path.join(__dirname, 'src/js/index.jsx')
-    ] :
+  [
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/dev-server',
+    Path.join(__dirname, 'src/js/index.jsx')
+  ] :
     // IN PRODUCTION, DON'T
     Path.join(__dirname, 'src/js/index.jsx')
   ),
@@ -43,16 +43,17 @@ module.exports = {
     loaders: [
         { test: /\.css$/, loader: 'style!css', },
         { test: /.jsx?$/, loaders: [ 'babel-loader' ], include: Path.join(__dirname, 'src') },
+        { test: /\.json$/, loader: 'json', },
         { test: /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file-loader?name=assets/fonts/[hash].[ext]' },
         { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file?hash=sha512&digest=hex&name=assets/images/[hash].[ext]' },
-      ].concat(
+    ].concat(
         (IS_DEBUG_BUILD ?
-          [
+        [
             { test: /\.scss$/, loaders: ['style', 'css?' + cssRoot, 'sass'] }
-          ] :
-          [
+        ] :
+        [
             { test: /\.scss$/, loader: ExtractSASS.extract(['css', 'sass'], { publicPath: '/' }) }
-          ]
+        ]
         )
       )
   },
@@ -71,15 +72,15 @@ module.exports = {
   ].concat(
   IS_DEBUG_BUILD ?
     // DEBUG PLUGINS
-    [
-      new webpack.HotModuleReplacementPlugin()
-    ] :
+  [
+    new webpack.HotModuleReplacementPlugin()
+  ] :
     // PRODUCTION PLUGINS
-    [
+  [
     // new webpack.optimize.DedupePlugin(),
     // new webpack.optimize.OccurenceOrderPlugin(),
     // new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-    ]
+  ]
   ),
 
   devServer: {

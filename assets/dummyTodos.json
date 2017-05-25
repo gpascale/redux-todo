@@ -1,0 +1,32 @@
+[
+  {
+    "text": "Pick up milk",
+    "completed": false,
+    "id": -10
+  },
+  {
+    "text": "Email bob about the contract situation",
+    "completed": true,
+    "id": -9
+  },
+  {
+    "text": "Look into emmet.js",
+    "completed": false,
+    "id": -8
+  },
+  {
+    "text": "Practice scales for 1 hour, arpeggios for 30 minutes, repetoire for 45 minutes",
+    "completed": false,
+    "id": -7
+  },
+  {
+    "text": "Complete tax return!",
+    "completed": false,
+    "id": -6
+  },
+  {
+    "text": "Start planning trip to Cuba",
+    "completed": false,
+    "id": -5
+  }
+]

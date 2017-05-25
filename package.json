@@ -8,7 +8,7 @@
     "build": "npm test && rm -rf dist/ && NODE_ENV=production webpack --colors --profile",
     "test": "mocha --compilers js:babel-core/register",
     "start": "PORT=8080 pm2 start ./server.js",
-    "lint": "node node_modules/eslint/bin/eslint.js --ext js,jsx src/; exit 0"
+    "lint": "node node_modules/eslint/bin/eslint.js -c .eslintrc-prod.json --ext js,jsx src/; exit 0"
   },
   "author": "Greg Pascale (greg.pascale@gmail.com)",
   "license": "ISC",
@@ -20,11 +20,13 @@
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.25.0",
     "eslint": "^3.19.0",
+    "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-react": "^7.0.1",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.24.1",
+    "json-loader": "^0.5.4",
     "mocha": "^3.2.0",
     "node-sass": "^3.11.2",
     "pm2": "^2.1.4",
