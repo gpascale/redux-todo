@@ -29,7 +29,9 @@
   }
 
   &.completed {
-    text-decoration: line-through;
+    .todoText {
+      text-decoration: line-through;
+    }
     color: gray;
   }
 
